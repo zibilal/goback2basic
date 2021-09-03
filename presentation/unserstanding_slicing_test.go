@@ -12,7 +12,7 @@ func TestSlicingSlice(t *testing.T) {
 	d := x[1:3]
 	e := x[:]
 	t.Log("x:", x)
-	t.Log("y:", y)
+	t.Log("y: adalah x[:2]", y)
 	t.Log("z:", z)
 	t.Log("d:", d)
 	t.Log("e:", e)
@@ -33,6 +33,14 @@ func TestSliceShareStorage(t *testing.T) {
 	t.Log("x:", x)
 	t.Log("y:", y)
 	t.Log("z:", z)
+
+	t.Log("Capacity before appends:", cap(x))
+
+	x = append(x, 121)
+	//x = append(x, 122)
+	//x = append(x, 123)
+	//x = append(x, 124)
+	t.Log("Capacity before appends:", cap(x))
 }
 
 func TestSliceShareWithAppend(t *testing.T) {
@@ -44,9 +52,9 @@ func TestSliceShareWithAppend(t *testing.T) {
 	t.Log("x:", x)
 	t.Log("y:", y)
 
-	// y = append(y, 40)
-	// t.Log("x:", x)
-	// t.Log("y:", y)
+	y = append(y, 40)
+	t.Log("x:", x)
+	t.Log("y:", y)
 }
 
 func TestSliceWithMoreAppends(t *testing.T) {

@@ -283,6 +283,27 @@ Use `...` instead:
 ```go
 var x = [...]int{10, 20, 30}
 ```
+---
+### Data Structures
+A data structures is way of organizing data in a computer so that
+it can be used effectively.
+
+### Big O Notation
+
+- `O(1)` - Executes in the same time regardless of the size of the input
+- `O(n)` - Executes linearly and proportionally to the size of the input
+- `O(n2)` - Performance is directly proportional to the square of the size of the input
+
+---
+
+### Comparing Arrays and Linked Lists
+
+|   |Array|Linked List|
+|---|---|----|
+|Cost of accessing elements|O(1)|O(n)|
+|Insert/Remove from beginning|O(n)|O(1)|
+|Insert/Remove from end|O(1)|O(n)|
+|Insert/Remove from middle|O(n)|O(n)|
 
 ___
 
@@ -933,6 +954,106 @@ type Manager struct {
 
 func (m Manager) FindNewEmployees() []Employee {
     // do business logic
+}
+```
+---
+### Linked List
+
+```go
+type LinkedList struct {
+	Head *Node
+	Tail *Node
+}
+
+type Node struct {
+	Next *Node
+	Data interface{}
+}
+```
+
+---
+### Linked List
+**Operation**
+Create new linked list object
+
+```go
+func New() *LinkedList {
+	emptyNode := &Node{
+	    Next: nil,
+	    Data: nil,
+    }
+    
+    return &LinkedList{
+        Head: emptyNode,
+        Tail: emptyNode,
+    }
+}
+```
+
+---
+### Linked List
+**Operation**
+Create Method to append data to a linked list
+
+```go
+func (l *LinkedList) Append(d interface{}) *LinkedList {
+	newNode := &Node{
+	    Next: nil,
+	    Data: d,
+    }
+    
+    // Empty linked list
+    if l.Head.Data == nil {
+    	l.Head = newNode
+    } else {
+        l.Tail.Next = newNode	
+    }
+    
+    l.Tail = newNode
+    
+    return l
+}
+```
+
+---
+### Linked List
+** Operation**
+Remove a value in a linked list
+
+```go
+func (l *LinkedList) DeleteWithValue(v interface{}) *LinkedList {
+	var node = l.Head
+	if reflect.DeepEqual(node.Data, v) {
+		l.Head = l.Head.Next
+		return l
+    }
+    
+    for {
+        if reflect.DeepEqual(v, node.Next.Data) {
+        	node.Next = node.Next.Next
+        	return l
+        }
+        node = node.Next
+    }
+    return l
+}
+```
+
+---
+### Linked List
+**Operation**
+Print all element of the linked list
+
+```go
+func(l *LinkedList) PrintAll() {
+	var node = l.Head
+	for {
+		fmt.Println(node.Data)
+		if node.Next == nil {
+		    return	
+        }
+        node = node.Next
+    }
 }
 ```
 
