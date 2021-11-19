@@ -15,12 +15,15 @@ func TestShadowVariables(t *testing.T) {
 }
 
 func TestShadowingWithMultipleAssignment(t *testing.T) {
-	x := 10
+	var (
+		x, y int
+	)
+	x, y = 10, 11
 	if x > 5 {
-		x, y := 5, 20
-		t.Log(x, y)
+		x1, y1 := 5, 20
+		t.Log(x1, y1)
 	}
-	t.Log(x)
+	t.Log(x, y)
 }
 
 func TestShadowingPackageName(t *testing.T) {
@@ -28,5 +31,5 @@ func TestShadowingPackageName(t *testing.T) {
 	t.Log(x)
 	fmt := "oops"
 	t.Log(fmt)
-	//fmt.Println("Test")
+	// fmt.Println("Test")
 }
