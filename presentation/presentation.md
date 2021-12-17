@@ -713,7 +713,7 @@ var opMap = map[string]opFuncType {
 ## Anonymous Functions
 
 ```go
-func main() {
+ffunc main() {
     for i := 0; i < 5; i++ {
         func(j int) {
             fmt.Println("printing", j, "from inside of an anonymous function")
@@ -1316,3 +1316,9 @@ REST - Representational State Transfer --> Roy Fielding, desertasi dia.
     - shared language and shared design consideration
 
 [List of HTTP status Code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#2xx_success) 
+
+# Introduction to Gin-gonic
+
+`gin.Engine` dan `gin.Context`
+
+[Document gin-gonic](https://github.com/gin-gonic/gin)
