@@ -1265,3 +1265,54 @@ Every disk is stacked on top of disks that are strictly larger than it. Disks ar
 
 ---
 ### Quicksort
+
+---
+
+### What is RESTful
+
+REST - Representational State Transfer --> Roy Fielding, desertasi dia.
+
+- Stateless
+- Content negotiation - header (Content-type, accept)
+- URI- URI template
+  - `{base-url}/v1/cif/products` - resource definition
+  - Method - GET, POST, PUT, PATCH, DELETE
+    - GET - Ngambil resource
+    - POST - Create resource
+    - PUT - update resource
+    - PATH - update resource
+    - DELETE - remove resource
+  - GET - URI Param
+    - request content-type = application/json, request accept = application/json, response = application/json
+
+```json
+{
+  "resource_id": "1234",
+  "message_id": "12",
+  "message": "asdfadfadsf",
+  "data": {}
+}
+```    
+
+      - `{base-url}/v1/cif/products/:id` - implicit unique, balikin object
+      - `{base-url}/v1/cif/products/:email` - implicit unique, balikin object
+      - `{base-url}/v1/cif/products/:name` - implicit not-unique, balikin array of objects
+      - `{base-url}/v1/cif/categories/:id` - implicit unique, balikin object
+      - `{base-url}/v1/cif/products/:catid` - implicit not-unique, balikin array of objects
+  - GET - Query Param
+    - `{base-url}/v1/cif/products/:name?fname=bila&lname=muhammad` - balikin array of objects 
+  - POST 
+    - `{base-url}/v1/cif/products`
+      - Header - content-type application/json
+  - PUT
+    - `{base-url}/v1/cif/products/:id`
+      - Request kirim object yang mau di-update minus id
+        - implicitly object
+    - `{base-url}/v1/bulk/cif/`
+  - PATCH `{base-uri}/v1/cif/products/:id`
+    - Request kirim hanya data yang pingin diupdate
+  - DELETE `{base-uri}/v1/cif/products/:id`
+  - Intent intuitively shown on the uri and http method
+    - shared language and shared design consideration
+
+[List of HTTP status Code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#2xx_success) 
